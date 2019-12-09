@@ -1,3 +1,3 @@
-export * from "./ControllBar/ControllBar";
+export * from "./ControlBar/ControlBar";
 export * from "./MovieCard/MovieCard";
 export * from "./MovieList";
