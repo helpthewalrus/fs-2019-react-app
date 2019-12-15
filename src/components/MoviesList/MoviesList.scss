@@ -1,0 +1,23 @@
+@import "../../styles/constants.scss";
+
+.movies-cards-list {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 30rem);
+  justify-content: space-between;
+  grid-gap: 5rem;
+  padding: 4rem;
+  margin: 0 auto;
+
+  background-color: $black;
+}
+
+.no-movies-found {
+  grid-column: 2;
+  padding: 2rem 0;
+  margin: auto;
+
+  font-size: 3rem;
+  color: $white;
+  text-transform: uppercase;
+}
