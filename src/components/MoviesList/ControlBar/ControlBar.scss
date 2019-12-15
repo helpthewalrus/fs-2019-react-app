@@ -1,0 +1,17 @@
+@import "../../../styles/constants.scss";
+
+.sort-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 6.5rem;
+
+  background-color: $gray;
+
+  .additional-info {
+    padding: 2rem 0;
+
+    font-size: 1.6rem;
+    color: $white;
+    font-weight: 900;
+  }
+}
