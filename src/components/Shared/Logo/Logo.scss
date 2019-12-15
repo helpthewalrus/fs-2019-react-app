@@ -1,0 +1,10 @@
+@import "../../../styles/constants.scss";
+
+.app-logo {
+  font-size: 2rem;
+  color: $red;
+
+  .app-logo__bold {
+    font-weight: 900;
+  }
+}
