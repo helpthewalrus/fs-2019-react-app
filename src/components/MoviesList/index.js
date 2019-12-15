@@ -1,3 +1,3 @@
 export * from "./ControlBar/ControlBar";
 export * from "./MovieCard/MovieCard";
-export * from "./MovieList";
+export * from "./MoviesList";
