@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./MovieCard.scss";
 
@@ -9,7 +10,8 @@ export const MovieCard = ({
   runtime,
   genres,
   director,
-  posterUrl
+  posterUrl,
+  onChangeCurrentMovie
 }) => {
   const genresList = genres.map((genre, index) => {
     return index < genres.length - 1 ? (
@@ -25,17 +27,19 @@ export const MovieCard = ({
   });
 
   return (
-    <li className="movie-card">
-      <img className="movie-poster" src={posterUrl} />
-      <div className="movie-info">
-        <div>
-          <h3 className="movie-title">{title}</h3>
-          <p className="movie-genres">{genresList}</p>
+    <Link to={`/movie/${id}`}>
+      <li className="movie-card" onClick={() => onChangeCurrentMovie(id)}>
+        <img className="movie-poster" src={posterUrl} />
+        <div className="movie-info">
+          <div>
+            <h3 className="movie-title">{title}</h3>
+            <p className="movie-genres">{genresList}</p>
+          </div>
+          <div>
+            <p className="movie-year">{year}</p>
+          </div>
         </div>
-        <div>
-          <p className="movie-year">{year}</p>
-        </div>
-      </div>
-    </li>
+      </li>
+    </Link>
   );
 };

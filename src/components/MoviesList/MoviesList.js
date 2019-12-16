@@ -2,7 +2,7 @@ import React from "react";
 import { MovieCard } from "./MovieCard/MovieCard";
 import "./MoviesList.scss";
 
-export const MoviesList = ({ movies, sortType }) => {
+export const MoviesList = ({ movies, sortType, changeCurrentMovie }) => {
   const sortMovies = movies => {
     return movies.sort((a, b) => {
       return a[sortType] < b[sortType] ? -1 : 1;
@@ -12,7 +12,13 @@ export const MoviesList = ({ movies, sortType }) => {
   const resultMovies = movies => {
     if (movies.length) {
       return sortMovies(movies).map(movie => {
-        return <MovieCard key={movie.id} {...movie} />;
+        return (
+          <MovieCard
+            key={movie.id}
+            {...movie}
+            onChangeCurrentMovie={changeCurrentMovie}
+          />
+        );
       });
     }
     return (
