@@ -13,19 +13,37 @@ export const MovieInfo = ({
   posterUrl
 }) => {
   return (
-    <div className="movieInfo">
-      <p>{id}</p>
-      <p>{title}</p>
-      <p>{year}</p>
-      <p>{runtime}</p>
-      <p>
-        {genres.map(genre => {
-          return <span key={genre}>{genre}</span>;
-        })}
-      </p>
-      <p>{plot}</p>
-      <p>{director}</p>
-      <p>{posterUrl}</p>
+    <div className="movie-info__wrapper">
+      <img className="movie-info__image" src={posterUrl} />
+      <div className="movie-info">
+        <div className="movie-info__title-wrapper">
+          <h2 className="movie-info__title">{title}</h2>
+          <p className="movie-info__rate">4.3</p>
+        </div>
+
+        <p className="movie-info__genres">
+          {genres.map(genre => {
+            return (
+              <span className="movie-info__genre" key={genre}>
+                {genre}
+              </span>
+            );
+          })}
+        </p>
+
+        <div className="movie-info__year-wrapper">
+          <p className="movie-info__year-item movie-info__year">
+            {year}
+            <span>year</span>
+          </p>
+          <p className="movie-info__year-item movie-info__runtime">
+            {runtime}
+            <span>min</span>
+          </p>
+        </div>
+
+        <p className="movie-info__plot">{plot}</p>
+      </div>
     </div>
   );
 };

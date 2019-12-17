@@ -1,0 +1,73 @@
+@import "../../styles/constants.scss";
+
+.movie-info__wrapper {
+  display: flex;
+
+  padding: 2rem 4rem;
+  margin: 0 auto;
+
+  .movie-info__image {
+    width: 30rem;
+    height: 45rem;
+    margin-right: 5rem;
+  }
+
+  .movie-info {
+    min-width: 50rem;
+
+    color: $white;
+    letter-spacing: 0.05rem;
+
+    .movie-info__title-wrapper {
+      display: flex;
+      align-items: baseline;
+
+      margin-bottom: 3rem;
+
+      .movie-info__title {
+        font-size: 6rem;
+        margin-right: 2rem;
+      }
+
+      .movie-info__rate {
+        padding: 2rem;
+
+        font-size: 3.4rem;
+        color: $green;
+        border: 1px solid #ffffff;
+        border-radius: 77rem;
+      }
+    }
+
+    .movie-info__genres {
+      margin-bottom: 3rem;
+
+      .movie-info__genre {
+        font-size: 2.4rem;
+        margin-right: 1.6rem;
+      }
+    }
+
+    .movie-info__year-wrapper {
+      display: flex;
+      margin-bottom: 3rem;
+
+      .movie-info__year-item {
+        font-size: 3rem;
+        color: $red;
+      }
+
+      span {
+        margin: 0 4rem 0 0.5rem;
+
+        font-size: 2rem;
+        color: $whiter;
+      }
+    }
+
+    .movie-info__plot {
+      font-size: 2.4rem;
+      font-weight: 100;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import { movies } from "../../tempdata";
 import {
@@ -66,18 +66,20 @@ export class App extends Component {
       <Router>
         <div className="app-central-wrapper">
           <Switch>
-            <Route path="/" exact>
-              <div className="app-upper-container">
+            <div className="app-upper-container">
+              <Link to="/">
                 <Header />
+              </Link>
+              <Route path="/" exact>
                 <Search
                   changeSearchType={event => this.onChangeSearchType(event)}
                   changeSearchMovie={event => this.onChangeSearchMovie(event)}
                 />
-              </div>
-            </Route>
-            <Route path="/movie/:id">
-              <MovieInfo {...this.state.currentMovie} />
-            </Route>
+              </Route>
+              <Route path="/movie/:id">
+                <MovieInfo {...this.state.currentMovie} />
+              </Route>
+            </div>
           </Switch>
           <main>
             <ControlBar
