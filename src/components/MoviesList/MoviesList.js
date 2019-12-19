@@ -1,24 +1,21 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import { MovieCard } from "./MovieCard/MovieCard";
 import "./MoviesList.scss";
 
-export const MoviesList = ({ movies, sortType, changeCurrentMovie }) => {
-  const sortMovies = movies => {
-    return movies.sort((a, b) => {
-      return a[sortType] < b[sortType] ? -1 : 1;
-    });
-  };
+const mapStateToProps = state => ({
+  movies: state.movies
+});
 
+export const MoviesList = connect(
+  mapStateToProps,
+  null
+)(({ movies }) => {
   const resultMovies = movies => {
     if (movies.length) {
-      return sortMovies(movies).map(movie => {
-        return (
-          <MovieCard
-            key={movie.id}
-            {...movie}
-            onChangeCurrentMovie={changeCurrentMovie}
-          />
-        );
+      return movies.map(movie => {
+        return <MovieCard key={movie.id} {...movie} />;
       });
     }
     return (
@@ -29,4 +26,4 @@ export const MoviesList = ({ movies, sortType, changeCurrentMovie }) => {
   };
 
   return <ul className="movies-cards-list">{resultMovies(movies)}</ul>;
-};
+});
