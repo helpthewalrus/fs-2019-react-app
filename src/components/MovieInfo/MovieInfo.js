@@ -12,20 +12,20 @@ export const MovieInfo = connect(
   const {
     id,
     title,
-    year,
+    release_date,
     runtime,
     genres,
-    plot,
-    director,
-    posterUrl
+    overview,
+    poster_path,
+    vote_average
   } = currentMovie;
   return (
     <div className="movie-info__wrapper">
-      <img className="movie-info__image" src={posterUrl} />
+      <img className="movie-info__image" src={poster_path} />
       <div className="movie-info">
         <div className="movie-info__title-wrapper">
           <h2 className="movie-info__title">{title}</h2>
-          <p className="movie-info__rate">4.3</p>
+          <p className="movie-info__rate">{vote_average}</p>
         </div>
 
         <p className="movie-info__genres">
@@ -40,7 +40,7 @@ export const MovieInfo = connect(
 
         <div className="movie-info__year-wrapper">
           <p className="movie-info__year-item movie-info__year">
-            {year}
+            {release_date.split("-")[0]}
             <span>year</span>
           </p>
           <p className="movie-info__year-item movie-info__runtime">
@@ -49,7 +49,7 @@ export const MovieInfo = connect(
           </p>
         </div>
 
-        <p className="movie-info__plot">{plot}</p>
+        <p className="movie-info__plot">{overview}</p>
       </div>
     </div>
   );

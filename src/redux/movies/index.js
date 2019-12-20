@@ -2,5 +2,9 @@ export {
   changeSortType,
   changeSearchType,
   changeSearchMovie,
-  changeCurrentMovie
+  changeCurrentMovie,
+  fetchMoviesRequest,
+  fetchMoviesSuccess,
+  fetchMoviesFailure,
+  fetchMovies
 } from "./movieActions";

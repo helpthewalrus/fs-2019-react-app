@@ -3,21 +3,32 @@ import { connect } from "react-redux";
 
 import { Toggler } from "../Shared/Toggler/Toggler";
 import "./Search.scss";
-import { changeSearchType, changeSearchMovie } from "../../redux/movies";
+import {
+  changeSearchType,
+  changeSearchMovie,
+  fetchMovies
+} from "../../redux/movies";
+
+const mapStateToProps = state => ({
+  searchType: state.searchType
+});
 
 const mapDispatchToProps = dispatch => ({
   changeSearchMovie: searchQuery => dispatch(changeSearchMovie(searchQuery)),
-  changeSearchType: ({ target: { value } }) => dispatch(changeSearchType(value))
+  changeSearchType: ({ target: { value } }) =>
+    dispatch(changeSearchType(value)),
+  fetchMovies: searchMovie => dispatch(fetchMovies(searchMovie))
 });
 
 export const Search = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
-)(({ changeSearchType, changeSearchMovie }) => {
+)(({ changeSearchType, changeSearchMovie, fetchMovies, searchType }) => {
   const parseQuery = ({ target }) => {
     event.preventDefault();
     const searchMovie = new FormData(target).get("searchMovie");
     changeSearchMovie(searchMovie);
+    fetchMovies(searchMovie);
   };
 
   return (
@@ -42,6 +53,7 @@ export const Search = connect(
         rightLabel="genre"
         title="searh by"
         onChangeCb={changeSearchType}
+        selected={searchType === "genres" ? "genre" : searchType}
       />
     </div>
   );
