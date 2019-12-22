@@ -39,12 +39,9 @@ const movieReducer = (state = initialState, action) => {
       };
 
     case CHANGE_CURRENT_MOVIE:
-      const currentMovie = state.movies.find(movie => {
-        return movie.id === action.payload.id;
-      });
       return {
         ...state,
-        currentMovie
+        currentMovie: action.payload
       };
 
     case FETCH_MOVIES_REQUEST:
@@ -55,14 +52,11 @@ const movieReducer = (state = initialState, action) => {
 
     case FETCH_MOVIES_SUCCESS:
       const movies = action.payload;
-      const sortedMovies = movies.sort((a, b) => {
-        return a[state.sortType] < b[state.sortType] ? -1 : 1;
-      });
 
       return {
         ...state,
         loading: false,
-        movies: sortedMovies,
+        movies,
         error: ""
       };
 
