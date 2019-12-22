@@ -8,7 +8,7 @@
     "build": "webpack --mode=production",
     "dev-server": "webpack-dev-server",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watchAll --collect-coverage"
   },
   "keywords": [],
   "author": "",
