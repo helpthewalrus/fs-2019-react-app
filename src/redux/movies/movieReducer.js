@@ -39,9 +39,8 @@ const movieReducer = (state = initialState, action) => {
       };
 
     case CHANGE_CURRENT_MOVIE:
-      const movieId = action.payload;
       const currentMovie = state.movies.find(movie => {
-        return movie.id === movieId;
+        return movie.id === action.payload.id;
       });
       return {
         ...state,

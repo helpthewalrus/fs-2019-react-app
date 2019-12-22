@@ -33,10 +33,10 @@ export const changeSearchMovie = searchMovie => {
   };
 };
 
-export const changeCurrentMovie = movieId => {
+export const changeCurrentMovie = currentMovie => {
   return {
     type: CHANGE_CURRENT_MOVIE,
-    payload: movieId
+    payload: currentMovie
   };
 };
 

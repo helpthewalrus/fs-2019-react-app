@@ -1,0 +1,16 @@
+@import "../../styles/constants.scss";
+
+.not-found__page {
+  padding: 10rem 0;
+  text-align: center;
+
+  .not-found_img {
+    width: 50rem;
+    margin-bottom: 2rem;
+  }
+
+  .not-found__paragraph {
+    font-size: 40px;
+    color: $white;
+  }
+}

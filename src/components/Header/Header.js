@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./Header.scss";
 import { Logo } from "../Shared/Logo/Logo";
 
 export const Header = () => {
   return (
-    <div className="header">
-      <Logo />
-    </div>
+    <Link to="/">
+      <div className="header">
+        <Logo />
+      </div>
+    </Link>
   );
 };

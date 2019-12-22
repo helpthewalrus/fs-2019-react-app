@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import { Toggler } from "../../Shared/Toggler/Toggler";
 import "./ControlBar.scss";
@@ -12,7 +13,8 @@ import {
 const mapStateToProps = state => ({
   sortType: state.sortType,
   searchMovie: state.searchMovie,
-  moviesCount: state.movies.length
+  moviesCount: state.movies.length,
+  currentMovie: state.currentMovie
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -31,7 +33,8 @@ export const ControlBar = connect(
     fetchMovies,
     sortType,
     searchMovie,
-    moviesCount
+    moviesCount,
+    currentMovie
   }) => {
     const sortChangeHandler = event => {
       changeSortType(event.target.value);
@@ -40,18 +43,29 @@ export const ControlBar = connect(
     };
 
     return (
-      <div className="sort-wrapper">
-        <p className="additional-info">
-          {`${moviesCount} movie${moviesCount === 1 ? "" : "s"} found`}
-        </p>
-        <Toggler
-          leftLabel="year"
-          rightLabel="title"
-          title="sort by"
-          onChangeCb={sortChangeHandler}
-          selected={sortType === "release_date" ? "year" : sortType}
-        />
-      </div>
+      <Switch>
+        <Route path={["/", "/search"]} exact>
+          <div className="sort-wrapper">
+            <p className="additional-info">
+              {`${moviesCount} movie${moviesCount === 1 ? "" : "s"} found`}
+            </p>
+            <Toggler
+              leftLabel="year"
+              rightLabel="title"
+              title="sort by"
+              onChangeCb={sortChangeHandler}
+              selected={sortType === "release_date" ? "year" : sortType}
+            />
+          </div>
+        </Route>
+        <Route path="/movie/:id">
+          <div className="sort-wrapper">
+            <p className="additional-info">{`Films by ${
+              currentMovie ? currentMovie.genres[0] : null
+            } genre`}</p>
+          </div>
+        </Route>
+      </Switch>
     );
   }
 );
